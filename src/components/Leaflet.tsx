@@ -1,5 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Map, TileLayer } from "react-leaflet";
+
+import Earthquakes from "./Earthquakes";
 
 export interface LeafletProps {}
 
@@ -12,6 +14,7 @@ const Leaflet: FC<LeafletProps> = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
+      <Earthquakes />
     </Map>
   );
 };
