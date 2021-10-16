@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Map, TileLayer } from "react-leaflet";
 
 import Earthquakes from "./Earthquakes";
+import Legend from "./Legend";
 
 export interface LeafletProps {}
 
@@ -15,6 +16,7 @@ const Leaflet: FC<LeafletProps> = () => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Earthquakes />
+      <Legend />
     </Map>
   );
 };
