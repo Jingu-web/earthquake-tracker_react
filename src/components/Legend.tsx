@@ -2,7 +2,7 @@ import L from "leaflet";
 import { withLeaflet } from "react-leaflet";
 
 import { circleMarkerColor } from "../utils/circleMarkerColor";
-// import "../styles/Legend.css";
+import "../styles/Legend.css";
 
 export interface LegendProps {
   leaflet: {
