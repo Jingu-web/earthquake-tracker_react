@@ -1,6 +1,6 @@
 import { useState, useEffect, FC } from "react";
 import { withLeaflet } from "react-leaflet";
-import L, { CircleMarker, LatLng } from "leaflet";
+import L, { LatLng, Layer } from "leaflet";
 
 import { getEarthquakes } from "../services/getEarthquakes";
 import { IFeature } from "../models/IFEature";
@@ -16,10 +16,12 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet }) => {
   const [earthquakes, setEarthquakes]: any = useState([]);
   console.log(earthquakes);
 
-  const onEachFeature = (feature: IFeature, layer: CircleMarker) => {
+  const onEachFeature = (feature: IFeature, layer: Layer) => {
     let popupContent = `
             <h3>${feature.properties.title}</h3>
             <b>Place</b>: ${feature.properties.place} <br>
+            <b>Lat</b>: ${feature.geometry.coordinates[1]}
+            <b>Lon</b>: ${feature.geometry.coordinates[0]} <br>
             <b>Magnitude</b>: ${feature.properties.mag} Richter<br>
             <b>Details</b>: <a href=${feature.properties.url} target="_blank">click here to find more details</a>
         `;
