@@ -22,7 +22,8 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet }) => {
             <b>Place</b>: ${feature.properties.place} <br>
             <b>Lat</b>: ${feature.geometry.coordinates[1]}
             <b>Lon</b>: ${feature.geometry.coordinates[0]} <br>
-            <b>Magnitude</b>: ${feature.properties.mag} Richter<br>
+            <b>Depth</b>: ${feature.geometry.coordinates[2]} km <br>
+            <b>Magnitude</b>: ${feature.properties.mag} Richter <br>
             <b>Details</b>: <a href=${feature.properties.url} target="_blank">click here to find more details</a>
         `;
 
