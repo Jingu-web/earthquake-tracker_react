@@ -3,6 +3,7 @@ import { withLeaflet } from "react-leaflet";
 
 import { circleMarkerColor } from "../utils/circleMarkerColor";
 import "../styles/Legend.css";
+import { FC } from "react";
 
 export interface LegendProps {
   leaflet: {
@@ -10,7 +11,7 @@ export interface LegendProps {
   };
 }
 
-const Legend: React.FC<LegendProps> = ({ leaflet }) => {
+const Legend: FC<LegendProps> = ({ leaflet }) => {
   const legend = new L.Control({ position: "bottomright" });
 
   legend.onAdd = (map: any) => {
