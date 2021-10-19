@@ -3,7 +3,7 @@ export interface IFeature {
   properties: {
     mag: number;
     place: string;
-    time: Date;
+    time: number;
     url: string;
     title: string;
   };
