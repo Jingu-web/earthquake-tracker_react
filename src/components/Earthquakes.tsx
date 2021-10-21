@@ -19,12 +19,12 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet }) => {
   const onEachFeature = (feature: IFeature, layer: Layer) => {
     let popupContent = `
             <h3>${feature.properties.title}</h3>
-            <b>Place</b>: ${feature.properties.place} <br>
-            <b>Lat</b>: ${feature.geometry.coordinates[1]}
-            <b>Lon</b>: ${feature.geometry.coordinates[0]} <br>
-            <b>Depth</b>: ${feature.geometry.coordinates[2]} km <br>
-            <b>Magnitude</b>: ${feature.properties.mag} Richter <br>
-            <b>Details</b>: <a href=${feature.properties.url} target="_blank">click here to find more details</a>
+            <b>震源地</b>: ${feature.properties.place} <br>
+            <b>緯度</b>: ${feature.geometry.coordinates[1]}
+            <b>経度</b>: ${feature.geometry.coordinates[0]} <br>
+            <b>深さ</b>: ${feature.geometry.coordinates[2]} km <br>
+            <b>マグニチュード</b>: ${feature.properties.mag} Richter <br>
+            <b>詳細</b>: <a href=${feature.properties.url} target="_blank">詳細はココをクリック</a>
         `;
 
     if (feature.properties) layer.bindPopup(popupContent);
