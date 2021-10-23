@@ -17,6 +17,7 @@ const Leaflet: FC<LeafletProps> = () => {
         {tilelayers.map(({ name, attribution, url }: ITilelayer) => {
           return (
             <LayersControl.BaseLayer
+              key={name}
               name={name}
               checked={name === "Googleストリート" ? true : false}
             >
