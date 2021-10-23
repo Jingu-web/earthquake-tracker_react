@@ -15,7 +15,6 @@ const Legend: FC<LegendProps> = ({ leaflet }) => {
   const legend = new L.Control({ position: "bottomright" });
 
   legend.onAdd = (map: any) => {
-    console.log(map);
     let div = L.DomUtil.create("div", "info legend"),
       grades = [0, 1, 2, 3, 5, 7],
       labels = [],

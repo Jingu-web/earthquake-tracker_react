@@ -1,10 +1,12 @@
 import { FC } from "react";
-import { Map, TileLayer, LayersControl } from "react-leaflet";
+import { Map, TileLayer, LayersControl, GeoJSON } from "react-leaflet";
 
 import Earthquakes from "./Earthquakes";
 import Legend from "./Legend";
 import tilelayers from "../constants/tilelayers";
 import { ITilelayer } from "../models/ITilelayer";
+import tectonicPlates from "../assets/boundaries.json";
+import { tectonicPlatesStyle } from "../constants/tectonicPlatesStyle";
 
 export interface LeafletProps {}
 
@@ -25,6 +27,12 @@ const Leaflet: FC<LeafletProps> = () => {
             </LayersControl.BaseLayer>
           );
         })}
+        <LayersControl.Overlay name="Tectonic Plates">
+          <GeoJSON
+            data={tectonicPlates as GeoJSON.GeoJsonObject}
+            style={tectonicPlatesStyle}
+          />
+        </LayersControl.Overlay>
       </LayersControl>
       <Earthquakes />
       <Legend />
