@@ -7,6 +7,7 @@ import tilelayers from "../constants/tilelayers";
 import { ITilelayer } from "../models/ITilelayer";
 import tectonicPlates from "../assets/boundaries.json";
 import { tectonicPlatesStyle } from "../constants/tectonicPlatesStyle";
+import styles from "../styles/Leaflet.module.css";
 
 export interface LeafletProps {}
 
@@ -14,7 +15,7 @@ const position: [number, number] = [35.66572, 139.731];
 
 const Leaflet: FC<LeafletProps> = () => {
   return (
-    <Map center={position} zoom={3} style={{ height: "100vh" }}>
+    <Map center={position} zoom={3} className={styles.map}>
       <LayersControl position="topright">
         {tilelayers.map(({ name, attribution, url }: ITilelayer) => {
           return (
