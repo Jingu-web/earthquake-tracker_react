@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { Map, TileLayer, LayersControl, GeoJSON } from "react-leaflet";
+import {
+  Map,
+  TileLayer,
+  LayersControl,
+  GeoJSON,
+  ScaleControl,
+} from "react-leaflet";
 
 import Earthquakes from "./Earthquakes";
 import Legend from "./Legend";
@@ -36,6 +42,7 @@ const Leaflet: FC<LeafletProps> = () => {
         </LayersControl.Overlay>
       </LayersControl>
       <Earthquakes />
+      <ScaleControl />
       <Legend />
     </Map>
   );
