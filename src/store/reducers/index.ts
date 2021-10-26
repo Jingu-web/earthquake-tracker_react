@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-// import earthquakesReducer from "./earthquakesReducer";
+import earthquakesReducer from "./earthquakesReducer";
 
 const reducers = combineReducers({
-  // earthquakes: earthquakesReducer,
+  earthquakes: earthquakesReducer,
 });
 
 export default reducers;
