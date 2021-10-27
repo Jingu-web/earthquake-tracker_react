@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import { connect } from "react-redux";
 
-import { changeQuery } from "../store/actions";
+import { changeStarttime } from "../store/actions";
 
 export interface NavbarProps {
-  changeQuery: (arg1: any) => void;
+  changeStarttime: (arg1: any) => void;
 }
 
-const Navbar: FC<NavbarProps> = ({ changeQuery }) => {
+const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
   const [query, setQuery] = useState("");
 
   return (
@@ -26,7 +26,7 @@ const Navbar: FC<NavbarProps> = ({ changeQuery }) => {
         <form
           className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
-            changeQuery(query);
+            changeStarttime(query);
             e.preventDefault();
           }}
         >
@@ -50,6 +50,6 @@ const Navbar: FC<NavbarProps> = ({ changeQuery }) => {
   );
 };
 
-const mapDispatchToProps = { changeQuery };
+const mapDispatchToProps = { changeStarttime };
 
 export default connect(null, mapDispatchToProps)(Navbar);
