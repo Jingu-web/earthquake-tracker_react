@@ -7,9 +7,7 @@ const App: FC = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <Leaflet />
-      </div>
+      <Leaflet />
     </div>
   );
 };

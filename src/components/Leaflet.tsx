@@ -23,17 +23,15 @@ const Leaflet: FC<LeafletProps> = () => {
   return (
     <Map center={position} zoom={3} className={styles.map}>
       <LayersControl position="topright">
-        {tilelayers.map(({ name, attribution, url }: ITilelayer) => {
-          return (
-            <LayersControl.BaseLayer
-              key={name}
-              name={name}
-              checked={name === "Googleストリート" ? true : false}
-            >
-              <TileLayer attribution={attribution} url={url} />
-            </LayersControl.BaseLayer>
-          );
-        })}
+        {tilelayers.map(
+          ({ name, attribution, url, checked }: ITilelayer, id) => {
+            return (
+              <LayersControl.BaseLayer key={id} name={name} checked={checked}>
+                <TileLayer attribution={attribution} url={url} />
+              </LayersControl.BaseLayer>
+            );
+          }
+        )}
         <LayersControl.Overlay name="Tectonic Plates">
           <GeoJSON
             data={tectonicPlates as GeoJSON.GeoJsonObject}
