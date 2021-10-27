@@ -13,12 +13,13 @@ export interface EarthquakesProps {
     map: any;
   };
   starttime: string;
+  endtime: string;
 }
 
 let geojson: any;
 
-const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime }) => {
-  const earthquakes = useEarthquakes(starttime);
+const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime, endtime }) => {
+  const earthquakes = useEarthquakes(starttime, endtime);
 
   const onEachFeature = (feature: IFeature, layer: Layer) => {
     let popupContent = `
@@ -52,6 +53,7 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime }) => {
 
 const mapStateToProps = (state: any) => ({
   starttime: state.earthquakes.starttime,
+  endtime: state.earthquakes.endtime,
 });
 
 export default withLeaflet(connect(mapStateToProps)(Earthquakes));

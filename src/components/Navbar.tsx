@@ -1,14 +1,16 @@
 import { FC, useState } from "react";
 import { connect } from "react-redux";
 
-import { changeStarttime } from "../store/actions";
+import { changeStarttime, changeEndtime } from "../store/actions";
 
 export interface NavbarProps {
   changeStarttime: (arg1: any) => void;
+  changeEndtime: (arg1: string) => void;
 }
 
 const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
-  const [query, setQuery] = useState("");
+  const [starttime, setStarttime] = useState("");
+  const [endtime, setEndtime] = useState("");
 
   return (
     <nav className="flex justify-between bg-green-200 pt-8">
@@ -26,7 +28,8 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
         <form
           className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
-            changeStarttime(query);
+            changeStarttime(starttime);
+            changeEndtime(endtime);
             e.preventDefault();
           }}
         >
@@ -35,8 +38,16 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
             type="text"
             placeholder="Search..."
             aria-label="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={starttime}
+            onChange={(e) => setStarttime(e.target.value)}
+          />
+          <input
+            className="form-control mr-sm-2"
+            type="text"
+            placeholder="End time"
+            aria-label="Search"
+            value={endtime}
+            onChange={(e) => setEndtime(e.target.value)}
           />
           <button
             className="btn btn-outline-success my-2 my-sm-0"
@@ -50,6 +61,6 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
   );
 };
 
-const mapDispatchToProps = { changeStarttime };
+const mapDispatchToProps = { changeStarttime, changeEndtime };
 
 export default connect(null, mapDispatchToProps)(Navbar);
