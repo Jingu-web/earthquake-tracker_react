@@ -42,7 +42,7 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime, endtime }) => {
 
   geojson = L.geoJSON(earthquakes.features, {
     onEachFeature,
-    pointToLayer: function (feature: IFeature, latlng: LatLng) {
+    pointToLayer: (feature: IFeature, latlng: LatLng) => {
       const magnitude = feature.properties.mag;
       return L.circleMarker(latlng, geojsonMarkerOptions(magnitude));
     },
