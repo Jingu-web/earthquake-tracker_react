@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { connect } from "react-redux";
 import { withLeaflet } from "react-leaflet";
-import L, { LatLng, Layer } from "leaflet";
+import L, { LatLng } from "leaflet";
 
 import { IFeature } from "../models/IFEature";
 import { geojsonMarkerOptions } from "../utils/geojsonMarkerOptions";
-import { timeConverter } from "../utils/timeConverter";
+import { onEachFeature } from "../utils/onEachFeature";
 import useEarthquakes from "../hooks/useEarthquakes";
 
 export interface EarthquakesProps {
@@ -18,27 +18,14 @@ export interface EarthquakesProps {
 
 let geojson: any;
 
-const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime, endtime }) => {
+const Earthquakes: FC<EarthquakesProps> = ({
+  leaflet: { map },
+  starttime,
+  endtime,
+}) => {
   const earthquakes = useEarthquakes(starttime, endtime);
 
-  const onEachFeature = (feature: IFeature, layer: Layer) => {
-    let popupContent = `
-    <h3>${feature.properties.title}</h3>
-    <b>発生時刻(JST)</b>: ${timeConverter(feature.properties.time, 9)} <br>
-    <b>震源地</b>: ${feature.properties.place} <br>
-    <b>緯度</b>: ${feature.geometry.coordinates[1]} <br>
-    <b>経度</b>: ${feature.geometry.coordinates[0]} <br>
-    <b>深さ</b>: ${feature.geometry.coordinates[2]} km <br>
-    <b>マグニチュード</b>: ${feature.properties.mag}<br>
-    <a href=${
-      feature.properties.url
-    } target="_blank">より詳細な情報はココをクリック</a>
-      `;
-
-    if (feature.properties) layer.bindPopup(popupContent);
-  };
-
-  if (leaflet.map.hasLayer(geojson)) leaflet.map.removeLayer(geojson);
+  if (map.hasLayer(geojson)) map.removeLayer(geojson);
 
   geojson = L.geoJSON(earthquakes.features, {
     onEachFeature,
@@ -46,7 +33,7 @@ const Earthquakes: FC<EarthquakesProps> = ({ leaflet, starttime, endtime }) => {
       const magnitude = feature.properties.mag;
       return L.circleMarker(latlng, geojsonMarkerOptions(magnitude));
     },
-  }).addTo(leaflet.map);
+  }).addTo(map);
 
   return null;
 };
