@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { connect } from "react-redux";
 
+import Dropdown from "./Dropdown";
 import { changeStarttime, changeEndtime } from "../store/actions";
 
 export interface NavbarProps {
@@ -13,7 +14,7 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
   const [endtime, setEndtime] = useState("");
 
   return (
-    <nav className="flex justify-between bg-green-200 pt-8">
+    <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div className="navbar-brand mr-auto mr-lg-0">Earthquakes</div>
       <button
         className="navbar-toggler p-0 border-0"
@@ -24,7 +25,9 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
       </button>
 
       <div className="navbar-collapse offcanvas-collapse">
-        <ul className="navbar-nav mr-auto mt-1"></ul>
+        <ul className="navbar-nav mr-auto mt-1">
+          <Dropdown />
+        </ul>
         <form
           className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
