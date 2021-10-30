@@ -32,7 +32,7 @@ const Leaflet: FC<LeafletProps> = () => {
             );
           }
         )}
-        <LayersControl.Overlay name="地殻変動プレートの表示">
+        <LayersControl.Overlay name="地殻変動プレートを表示">
           <GeoJSON
             data={tectonicPlates as GeoJSON.GeoJsonObject}
             style={tectonicPlatesStyle}
