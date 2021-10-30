@@ -7,11 +7,9 @@ import { IFeature } from "../models/IFEature";
 import { geojsonMarkerOptions } from "../utils/geojsonMarkerOptions";
 import { onEachFeature } from "../utils/onEachFeature";
 import useEarthquakes from "../hooks/useEarthquakes";
+import { ILeaflet } from "../models/ILeaflet";
 
-export interface EarthquakesProps {
-  leaflet: {
-    map: any;
-  };
+export interface EarthquakesProps extends ILeaflet {
   starttime: string;
   endtime: string;
 }
