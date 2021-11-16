@@ -2,14 +2,23 @@ import { FC, useState } from "react";
 import { connect } from "react-redux";
 
 import Dropdown from "./Dropdown";
-import { changeStarttime, changeEndtime } from "../store/actions";
+import {
+  changeStarttime,
+  changeEndtime,
+  changeDropdownValue,
+} from "../store/actions";
 
 export interface NavbarProps {
   changeStarttime: (arg1: any) => void;
   changeEndtime: (arg1: string) => void;
+  changeDropdownValue: (arg1: string) => void;
 }
 
-const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
+const Navbar: FC<NavbarProps> = ({
+  changeStarttime,
+  changeEndtime,
+  changeDropdownValue,
+}) => {
   const [starttime, setStarttime] = useState("");
   const [endtime, setEndtime] = useState("");
 
@@ -31,6 +40,7 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
         <form
           className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
+            changeDropdownValue("Select Period");
             changeStarttime(starttime);
             changeEndtime(endtime);
             e.preventDefault();
@@ -64,6 +74,10 @@ const Navbar: FC<NavbarProps> = ({ changeStarttime }) => {
   );
 };
 
-const mapDispatchToProps = { changeStarttime, changeEndtime };
+const mapDispatchToProps = {
+  changeStarttime,
+  changeEndtime,
+  changeDropdownValue,
+};
 
 export default connect(null, mapDispatchToProps)(Navbar);

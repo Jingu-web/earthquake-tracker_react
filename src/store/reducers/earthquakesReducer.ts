@@ -8,6 +8,7 @@ import {
 const initialState = {
   starttime: "NOW - 3days",
   endtime: "",
+  dropdownValue: "3日間",
 };
 
 export default (state = initialState, action: any) => {
