@@ -43,7 +43,7 @@ const Navbar: FC<NavbarProps> = ({
         <form
           className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
-            changeDropdownValue("Select Period");
+            changeDropdownValue("期間を選択中");
             changeStarttime(starttime);
             changeEndtime(endtime);
             e.preventDefault();
