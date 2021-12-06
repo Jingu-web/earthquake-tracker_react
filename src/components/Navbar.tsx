@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { connect } from "react-redux";
 
 import Dropdown from "./Dropdown";
+import InfoTip from "./Infotip";
 import {
   changeStarttime,
   changeEndtime,
@@ -21,6 +22,8 @@ const Navbar: FC<NavbarProps> = ({
 }) => {
   const [starttime, setStarttime] = useState("");
   const [endtime, setEndtime] = useState("");
+  const [starttimeTooltipOpen, setStarttimeTooltipOpen] = useState(false);
+  const [endtimeTooltipOpen, setEndtimeTooltipOpen] = useState(false);
 
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -48,20 +51,34 @@ const Navbar: FC<NavbarProps> = ({
         >
           <input
             className="form-control mr-sm-2"
+            id="starttime"
             type="text"
             placeholder="Search..."
             aria-label="Search"
             value={starttime}
             onChange={(e) => setStarttime(e.target.value)}
           />
+          <InfoTip
+            target={"starttime"}
+            tooltipOpen={starttimeTooltipOpen}
+            setTooltipOpen={setStarttimeTooltipOpen}
+          />
+
           <input
             className="form-control mr-sm-2"
+            id="endtime"
             type="text"
             placeholder="End time"
             aria-label="Search"
             value={endtime}
             onChange={(e) => setEndtime(e.target.value)}
           />
+          <InfoTip
+            target={"endtime"}
+            tooltipOpen={endtimeTooltipOpen}
+            setTooltipOpen={setEndtimeTooltipOpen}
+          />
+
           <button
             className="btn btn-outline-success my-2 my-sm-0"
             type="submit"
